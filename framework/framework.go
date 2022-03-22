@@ -18,7 +18,7 @@ const (
 	gracefulTimeout = time.Second * 15
 )
 
-func Start(port int, function http.HandlerFunc) error {
+func Start(port int, function http.HandlerFunc) {
 	router := http.NewServeMux()
 	router.HandleFunc("/", function)
 	srv := &http.Server{
@@ -51,6 +51,4 @@ func Start(port int, function http.HandlerFunc) error {
 	_ = srv.Shutdown(ctx)
 
 	log.Print("shutting down")
-
-	return nil
 }
