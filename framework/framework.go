@@ -4,7 +4,11 @@ import (
 	"net/http"
 )
 
-func Start(port string, function http.HandlerFunc) {
+func Start(port string, function http.HandlerFunc) error {
 	http.HandleFunc("/", function)
-	http.ListenAndServe(":"+port, nil)
+	err := http.ListenAndServe(":"+port, nil)
+	if err != nil {
+		return err
+	}
+	return nil
 }
