@@ -1,3 +1,3 @@
-module github.com/Nikita99100/go-server
+module github.com/Nikita99100/faas-sdk-go
 
 go 1.17
