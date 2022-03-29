@@ -13,8 +13,8 @@ import (
 )
 
 const (
-	writeTimeout    = time.Second * 15
-	readTimeout     = time.Second * 15
+	writeTimeout    = time.Second * 60
+	readTimeout     = time.Second * 60
 	gracefulTimeout = time.Second * 15
 )
 
@@ -30,6 +30,7 @@ func Start(port int, function http.HandlerFunc) {
 	}
 
 	go func() {
+		log.Print("Serving function")
 		err := srv.ListenAndServe()
 		if errors.Is(err, http.ErrServerClosed) {
 			log.Print("HTTP server closed")
